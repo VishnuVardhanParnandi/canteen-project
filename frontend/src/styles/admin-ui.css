@@ -1,0 +1,711 @@
+/* =====================================================
+   ADMIN UI – DIGITAL CANTEEN DASHBOARD
+===================================================== */
+
+:root {
+  --primary: #1d4ed8;
+  --primary-dark: #1e40af;
+  --bg: #f1f5f9;
+  --card: #ffffff;
+  --border: #e5e7eb;
+  --text: #0f172a;
+  --muted: #64748b;
+  --success: #16a34a;
+  --danger: #dc2626;
+  --warning: #f59e0b;
+  --radius: 12px;
+  --shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", system-ui, sans-serif;
+}
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+header {
+  background: linear-gradient(135deg, #1e40af, #2563eb);
+  color: white;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h2 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+header button {
+  background: #ef4444;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+header button:hover {
+  opacity: 0.9;
+}
+
+/* =====================================================
+   ADMIN TABS
+===================================================== */
+
+.admin-tabs {
+  padding: 24px;
+  max-width: 1300px;
+  margin: auto;
+}
+
+.tab-buttons {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.tab-buttons button {
+  background: var(--card);
+  border: 1px solid var(--border);
+  padding: 10px 18px;
+  background-color: royalblue;
+  color: #ffffff;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.15s ease;
+}
+
+.tab-buttons button:hover {
+  background: var(--primary);
+  color: white;
+  border-color: var(--primary);
+}
+
+/* =====================================================
+   TAB CONTENT CARD
+===================================================== */
+
+.tab-content {
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 20px;
+  box-shadow: var(--shadow);
+}
+
+/* ================================
+   ADMIN MENU DASHBOARD
+================================ */
+
+.admin-menu-wrapper {
+  padding: 24px;
+  background: #f8fafc;
+  border-radius: 12px;
+}
+
+.admin-menu-wrapper h3 {
+  margin-bottom: 16px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+/* Grid layout */
+.admin-menu {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+  gap: 16px;
+  margin-top: 10px;
+}
+
+/* Card */
+.admin-menu-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 16px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+  border: 1px solid #e5e7eb;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  position: relative;
+}
+
+.admin-menu-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.12);
+}
+
+/* Title */
+.admin-menu-card h4 {
+  margin: 0 0 6px 0;
+  font-size: 17px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+/* Price */
+.admin-price {
+  font-size: 15px;
+  font-weight: 600;
+  color: #2563eb;
+  margin-bottom: 6px;
+}
+
+/* Stock label */
+.admin-stock {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 999px;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+/* Stock states */
+.admin-stock.in {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.admin-stock.low {
+  background: #fff7ed;
+  color: #9a3412;
+}
+
+.admin-stock.out {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+/* Status text */
+.admin-status {
+  font-size: 13px;
+  color: #475569;
+}
+
+/* Django admin link */
+.admin-link {
+  display: inline-block;
+  margin-top: 22px;
+  padding: 10px 16px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+  color: #ffffff;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.admin-link:hover {
+  background: linear-gradient(135deg, #1d4ed8, #1e40af);
+  transform: translateY(-1px);
+}
+
+/* Loading / empty text */
+.admin-menu-wrapper p {
+  color: #64748b;
+  font-size: 14px;
+}
+
+/* =====================================================
+   ADMIN ORDERS
+===================================================== */
+
+.admin-orders-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 14px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow);
+}
+
+.admin-orders-card h4 {
+  margin: 0 0 6px;
+}
+
+.admin-orders-card p {
+  margin: 4px 0;
+  font-size: 14px;
+}
+
+.admin-orders-card select {
+  margin-top: 6px;
+}
+
+/* =====================================================
+   INVENTORY + MENU INVENTORY (Modern Admin Style)
+===================================================== */
+
+.admin-section {
+  background: #ffffff;
+  padding: 22px;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  margin-top: 16px;
+}
+
+/* Title */
+.admin-section h3 {
+  margin-bottom: 18px;
+  font-size: 22px;
+  font-weight: 700;
+  color: #0f172a;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 10px;
+}
+
+/* Header row (optional if you add one) */
+.inventory-header {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  padding: 10px 0;
+  font-size: 13px;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+/* Data rows */
+.inventory-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  align-items: center;
+  padding: 12px 0;
+  font-size: 15px;
+  border-bottom: 1px dashed #e5e7eb;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+/* Zebra effect */
+.inventory-row:nth-child(even) {
+  background: #f8fafc;
+}
+
+/* Hover effect */
+.inventory-row:hover {
+  background: #eef2ff;
+  transform: scale(1.01);
+}
+
+/* Name */
+.inventory-name {
+  font-weight: 600;
+  color: #0f172a;
+}
+
+/* Price */
+.inventory-price {
+  color: #2563eb;
+  font-weight: 600;
+}
+
+/* Stock badge */
+.inventory-stock {
+  justify-self: start;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  display: inline-block;
+}
+
+/* Stock states */
+.stock-high {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.stock-low {
+  background: #fff7ed;
+  color: #9a3412;
+}
+
+.stock-out {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+/* Empty state */
+.admin-section p {
+  color: #64748b;
+  font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .inventory-row,
+  .inventory-header {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .inventory-price,
+  .inventory-stock {
+    justify-self: start;
+  }
+}
+
+/* =====================================================
+   REPORTS – PREMIUM ANALYTICS DASHBOARD UI
+===================================================== */
+
+.reports-wrapper {
+  background: linear-gradient(135deg, #f1f5f9, #ffffff);
+  padding: 36px;
+  border-radius: 24px;
+  box-shadow:
+    0 10px 30px rgba(0,0,0,0.06),
+    inset 0 1px 0 rgba(255,255,255,0.6);
+  margin-top: 24px;
+  border: 1px solid rgba(148,163,184,0.25);
+}
+
+/* Header */
+
+.reports-title {
+  font-size: 28px;
+  font-weight: 900;
+  color: #0f172a;
+  margin-bottom: 6px;
+  letter-spacing: 0.3px;
+}
+
+.reports-subtitle {
+  font-size: 14px;
+  color: #64748b;
+  margin-bottom: 32px;
+}
+
+/* Grid */
+
+.reports-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  gap: 26px;
+}
+
+/* Chart Cards */
+
+.reports-chart-card {
+  position: relative;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 22px;
+  border: 1px solid rgba(148,163,184,0.25);
+  box-shadow:
+    0 10px 25px rgba(0,0,0,0.06),
+    0 20px 50px rgba(0,0,0,0.04);
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.reports-chart-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    120deg,
+    rgba(59,130,246,0.12),
+    rgba(99,102,241,0.05),
+    transparent 60%
+  );
+  pointer-events: none;
+}
+
+.reports-chart-card:hover {
+  transform: translateY(-8px) scale(1.01);
+  box-shadow:
+    0 20px 40px rgba(0,0,0,0.10),
+    0 35px 70px rgba(0,0,0,0.08);
+}
+
+/* Card Title */
+
+.reports-chart-card h4 {
+  margin: 0 0 14px;
+  font-size: 17px;
+  font-weight: 800;
+  color: #1e293b;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Chart wrapper */
+
+.reports-chart-wrapper {
+  position: relative;
+  height: 320px;
+  width: 100%;
+}
+
+/* Summary Cards */
+
+.reports-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-top: 36px;
+}
+
+.reports-summary-card {
+  background: linear-gradient(135deg, #ffffff, #f8fafc);
+  border-radius: 18px;
+  padding: 18px 20px;
+  border: 1px solid rgba(148,163,184,0.25);
+  box-shadow:
+    0 8px 18px rgba(0,0,0,0.05),
+    0 18px 36px rgba(0,0,0,0.04);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.25s ease;
+}
+
+.reports-summary-card:hover {
+  transform: translateY(-4px);
+  box-shadow:
+    0 14px 30px rgba(0,0,0,0.10),
+    0 30px 60px rgba(0,0,0,0.08);
+}
+
+.reports-summary-card::after {
+  content: "";
+  position: absolute;
+  right: -40px;
+  top: -40px;
+  width: 120px;
+  height: 120px;
+  background: linear-gradient(135deg, #60a5fa, #818cf8);
+  opacity: 0.15;
+  border-radius: 50%;
+}
+
+/* Summary text */
+
+.reports-summary-card h4 {
+  margin: 0;
+  font-size: 12px;
+  color: #64748b;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.reports-summary-card p {
+  margin: 10px 0 0;
+  font-size: 26px;
+  font-weight: 900;
+  background: linear-gradient(135deg, #a529d6, #7c3aed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* States */
+
+.reports-loading,
+.reports-empty {
+  padding: 60px;
+  text-align: center;
+  color: #64748b;
+  font-size: 16px;
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+  .reports-wrapper {
+    padding: 26px;
+  }
+
+  .reports-chart-wrapper {
+    height: 280px;
+  }
+}
+
+@media (max-width: 600px) {
+  .reports-title {
+    font-size: 22px;
+  }
+
+  .reports-chart-wrapper {
+    height: 240px;
+  }
+}
+
+.admin-feedback-container {
+  padding: 10px 5px;
+}
+
+.admin-feedback-title {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #1e3a8a;
+}
+
+/* Card */
+.feedback-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px 18px;
+  margin-bottom: 15px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.feedback-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+}
+
+/* Rows */
+.feedback-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+.label {
+  font-weight: 600;
+  color: #374151;
+  min-width: 60px;
+}
+
+.rating {
+  color: #f59e0b;
+  font-weight: 600;
+}
+
+/* Comment */
+.feedback-comment {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed #e5e7eb;
+  font-size: 14px;
+}
+
+.feedback-comment p {
+  margin: 6px 0 0;
+  color: #374151;
+  line-height: 1.5;
+}
+
+/* =====================================================
+   FORECAST – ML PREDICTION UI
+===================================================== */
+
+.forecast-wrapper {
+  background: linear-gradient(135deg, #f8fafc, #ffffff);
+  padding: 28px;
+  border-radius: 22px;
+  border: 1px solid rgba(148,163,184,0.25);
+  box-shadow:
+    0 12px 28px rgba(0,0,0,0.06),
+    inset 0 1px 0 rgba(255,255,255,0.6);
+}
+
+/* Header */
+
+.forecast-title {
+  font-size: 22px;
+  font-weight: 900;
+  color: #0f172a;
+  margin-bottom: 6px;
+}
+
+.forecast-subtitle {
+  font-size: 13px;
+  color: #64748b;
+  margin-bottom: 22px;
+}
+
+/* Grid */
+
+.forecast-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 18px;
+}
+
+/* Card */
+
+.forecast-card {
+  position: relative;
+  background: linear-gradient(135deg, #ffffff, #f1f5f9);
+  border-radius: 18px;
+  padding: 18px 18px 20px;
+  border: 1px solid rgba(148,163,184,0.25);
+  box-shadow:
+    0 8px 18px rgba(0,0,0,0.05),
+    0 18px 36px rgba(0,0,0,0.04);
+  transition: all 0.25s ease;
+  overflow: hidden;
+}
+
+.forecast-card::after {
+  content: "";
+  position: absolute;
+  right: -30px;
+  top: -30px;
+  width: 110px;
+  height: 110px;
+  background: linear-gradient(135deg, #6366f1, #a855f7);
+  opacity: 0.12;
+  border-radius: 50%;
+}
+
+.forecast-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow:
+    0 16px 32px rgba(0,0,0,0.10),
+    0 28px 60px rgba(0,0,0,0.08);
+}
+
+/* Item name */
+
+.forecast-item {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 10px;
+}
+
+/* Quantity number */
+
+.forecast-qty {
+  font-size: 34px;
+  font-weight: 900;
+  background: linear-gradient(135deg, #7c3aed, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 4px;
+}
+
+/* Label */
+
+.forecast-label {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: #64748b;
+}
+
