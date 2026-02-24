@@ -5,3 +5,8 @@ pymongo
 django-cors-headers
 gunicorn
 joblib
+Django
+pandas
+numpy
+scikit-learn
+whitenoise
